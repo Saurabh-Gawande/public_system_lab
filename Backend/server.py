@@ -53,7 +53,7 @@ def get_users():
             user_dict = {
                 "_id": str(user["_id"]),
                 "name": user.get("name", ""),
-                 "url": user.get("url", ""),
+                "password": user.get("password", ""),
                 # Add more fields as needed
             }
             user_list.append(user_dict)

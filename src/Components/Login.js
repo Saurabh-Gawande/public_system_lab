@@ -30,13 +30,17 @@ function Login() {
   const handleTogglePasswordVisibility = () => setShowPassword((show) => !show);
 
   const doSubmit = () => {
-    const userMatch = users.find((user) => user.name === username);
+    const userMatch = users.find(
+      (user) => user.name === username && user.password === password
+    );
     if (validateCaptcha(captcha) === true && userMatch) {
+      localStorage.setItem("username", username);
       setCaptcha("");
       loadCaptchaEnginge(5);
-      alert("login successful");
+      window.location.href = "/home";
     } else {
-      alert("Captcha Does Not Match");
+      alert("Invalid Credentials");
+      loadCaptchaEnginge(5);
       setCaptcha("");
     }
   };

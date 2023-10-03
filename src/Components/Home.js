@@ -1,22 +1,12 @@
-import React, { useContext } from "react";
-import userContext from "../Context/userContext";
+import React from "react";
 
 function Home() {
-  const { users } = useContext(userContext);
-  return (
-    <div>
-      {users.map((ele) => (
-        <div>
-          <div>{ele.name}</div>
-          <img
-            style={{ width: 250, height: 250 }}
-            src={ele.url}
-            alt={ele.name}
-          />
-        </div>
-      ))}
-    </div>
-  );
+  const savedUsername = localStorage.getItem("username");
+
+  if (savedUsername === "MaharashtraUser") return <div>Maharashtra</div>;
+  else if (savedUsername === "BiharUser") return <div>Bihar</div>;
+  else if (savedUsername === "DelhiUser") return <div>Delhi</div>;
+  else if (savedUsername === "ChandigradhUser") return <div>Chandigradh</div>;
 }
 
 export default Home;

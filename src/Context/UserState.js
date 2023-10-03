@@ -19,7 +19,6 @@ function UserState(props) {
       });
   }, []);
 
-  console.log({ users });
   return (
     <UserContext.Provider value={{ users, setUsers }}>
       {props.children}
