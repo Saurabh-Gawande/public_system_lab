@@ -1,12 +1,11 @@
 import React from "react";
+import Map from "./Map";
 
 function Home() {
   const savedUsername = localStorage.getItem("username");
 
-  if (savedUsername === "MaharashtraUser") return <div>Maharashtra</div>;
-  else if (savedUsername === "BiharUser") return <div>Bihar</div>;
-  else if (savedUsername === "DelhiUser") return <div>Delhi</div>;
-  else if (savedUsername === "ChandigradhUser") return <div>Chandigradh</div>;
+  if (savedUsername === "PunjabUser") return <Map />;
+  if (savedUsername === "MaharashtraUser") return div;
 }
 
 export default Home;
