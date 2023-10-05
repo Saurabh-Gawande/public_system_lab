@@ -5,7 +5,7 @@ function Home() {
   const savedUsername = localStorage.getItem("username");
 
   if (savedUsername === "PunjabUser") return <Map />;
-  if (savedUsername === "MaharashtraUser") return div;
+  if (savedUsername === "MaharashtraUser") return <div>Maharashtra</div>;
 }
 
 export default Home;
