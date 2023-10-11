@@ -5,8 +5,22 @@ import { MapContainer, GeoJSON, Marker, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import locationIcon from "../Img/location.png";
 import { useEffect, useState } from "react";
-import * as XLSX from "xlsx";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  withTheme,
+} from "@mui/material";
+
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: 300,
+      width: 100,
+    },
+  },
+};
 
 const markerCoordinates = [
   [31.5722768, 75.0397582, "Amritsar", 2110],
@@ -291,13 +305,12 @@ const markerCoordinates = [
 ];
 
 const Map = () => {
-  const [excelData, setExcelData] = useState([]);
-  const [state, setState] = useState("");
-  const [selectedStateData, setSelectedStateData] = useState("");
+  const [state, setState] = useState("Punjab");
+  // const [selectedStateData, setSelectedStateData] = useState("");
 
   const markerIcon = new L.Icon({
     iconUrl: locationIcon,
-    iconSize: [22, 22],
+    iconSize: [20, 20],
   });
 
   const handleChange = (event) => {
@@ -305,93 +318,85 @@ const Map = () => {
   };
 
   // useEffect(() => {
-  //   const excel = async () => {
-  //     const response = await fetch("/data/punjab.xlsx");
-  //     const arrayBuffer = await response.arrayBuffer();
-  //     const data = new Uint8Array(arrayBuffer);
-  //     const workbook = XLSX.read(data, { type: "array" });
-  //     const sheetName = workbook.SheetNames[0];
-  //     const sheet = workbook.Sheets[sheetName];
-  //     const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-  //     setExcelData(jsonData);
-  //   };
-  //   excel();
-  // }, []);
+  //   const filteredData = Punjab.features.filter(
+  //     (feature) => feature.properties.dtname === state
+  //   );
+  //   setSelectedStateData(filteredData);
+  // }, [state]);
 
-  useEffect(() => {
-    const filteredData = Punjab.features.filter(
-      (feature) => feature.properties.dtname === state
-    );
-    setSelectedStateData(filteredData);
-    console.log(state);
-  }, [state]);
   return (
-    <div>
-      <FormControl sx={{ m: 1, minWidth: 180 }} size="small">
-        <InputLabel id="demo-simple-select-autowidth-label">State</InputLabel>
-        <Select
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth"
-          value={state}
-          onChange={handleChange}
-          autoWidth
-          label="State"
-        >
-          <MenuItem value="Punjab">Punjab</MenuItem>
-          <MenuItem value={"Amritsar"}>Amritsar</MenuItem>
-          <MenuItem value={"Bathinda"}>Bathinda</MenuItem>
-          <MenuItem value={"Faridkot"}>Faridkot</MenuItem>
-          <MenuItem value={"Firozpur"}>Firozpur</MenuItem>
-          <MenuItem value={"Fatehgarh Sahib"}>Fatehgarh Sahib</MenuItem>
-          <MenuItem value={"Kapurthala"}>Kapurthala</MenuItem>
-          <MenuItem value={"Gurdaspur"}>Gurdaspur</MenuItem>
-          <MenuItem value={"Hoshiarpur"}>Hoshiarpur</MenuItem>
-          <MenuItem value={"Ludhiana East"}>Ludhiana East</MenuItem>
-          <MenuItem value={"Ludhiana West"}>Ludhiana West</MenuItem>
-          <MenuItem value={"Mansa"}>Mansa</MenuItem>
-          <MenuItem value={"Moga"}>Moga</MenuItem>
-          <MenuItem value={"Muktsar"}>Muktsar</MenuItem>
-          <MenuItem value={"Nawanshahr"}>Nawanshahr</MenuItem>
-          <MenuItem value={"Rupnagar"}>Rupnagar</MenuItem>
-          <MenuItem value={"Sangrur"}>Sangrur</MenuItem>
-          <MenuItem value={"Tarn Taran"}>Tarn Taran</MenuItem>
-        </Select>
-      </FormControl>
-      <h1>Punjab Map</h1>
-      <MapContainer
-        style={{ height: "75vh", width: "40vw" }}
-        zoom={7.5}
-        center={[31.0722768, 75.5398582]}
+    <div style={{ backgroundColor: "white", width: "80vw" }}>
+      <div style={{ display: "flex", justifyContent: "end", padding: "10px" }}>
+        <FormControl sx={{ m: 1, minWidth: 210 }} size="small">
+          <InputLabel id="demo-simple-select-autowidth-label">State</InputLabel>
+          <Select
+            value={state}
+            onChange={handleChange}
+            label="State"
+            MenuProps={MenuProps}
+          >
+            <MenuItem value="Punjab">Punjab</MenuItem>
+            <MenuItem value={"Amritsar"}>Amritsar</MenuItem>
+            <MenuItem value={"Bathinda"}>Bathinda</MenuItem>
+            <MenuItem value={"Faridkot"}>Faridkot</MenuItem>
+            <MenuItem value={"Firozpur"}>Firozpur</MenuItem>
+            <MenuItem value={"Fatehgarh Sahib"}>Fatehgarh Sahib</MenuItem>
+            <MenuItem value={"Kapurthala"}>Kapurthala</MenuItem>
+            <MenuItem value={"Gurdaspur"}>Gurdaspur</MenuItem>
+            <MenuItem value={"Hoshiarpur"}>Hoshiarpur</MenuItem>
+            <MenuItem value={"Ludhiana East"}>Ludhiana East</MenuItem>
+            <MenuItem value={"Ludhiana West"}>Ludhiana West</MenuItem>
+            <MenuItem value={"Mansa"}>Mansa</MenuItem>
+            <MenuItem value={"Moga"}>Moga</MenuItem>
+            <MenuItem value={"Muktsar"}>Muktsar</MenuItem>
+            <MenuItem value={"Nawanshahr"}>Nawanshahr</MenuItem>
+            <MenuItem value={"Rupnagar"}>Rupnagar</MenuItem>
+            <MenuItem value={"Sangrur"}>Sangrur</MenuItem>
+            <MenuItem value={"Tarn Taran"}>Tarn Taran</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div
+        style={{ display: "flex", justifyContent: "center", padding: "10px" }}
       >
-        <GeoJSON
-          data={Punjab}
-          // data={{
-          //   type: "FeatureCollection",
-          //   features: selectedStateData,
-          // }}
-          // style={{ fillColor: "green" }}
-          style={(feature) => ({
-            fillColor: feature.properties.dtname === state ? "green" : "red",
-            weight: 2,
-            opacity: 1,
-            color: "white",
-            fillOpacity: 0.5,
-          })}
+        <MapContainer
+          style={{ height: "75vh", width: "40vw" }}
+          zoom={7.5}
+          center={[31.0722768, 75.5398582]}
         >
-          {markerCoordinates
-            .filter((coordinate) => coordinate[2] === state)
-            .map((coordinate, index) => (
-              <Marker
-                key={index}
-                position={[coordinate[0], coordinate[1]]}
-                icon={markerIcon}
-              >
-                <Tooltip>Warehouse_ID: {coordinate[3]}</Tooltip>
-              </Marker>
-            ))}
-          {/* <Polyline positions={markerCoordinates} color="magenta" /> */}
-        </GeoJSON>
-      </MapContainer>
+          <GeoJSON
+            data={Punjab}
+            // data={{
+            //   type: "FeatureCollection",
+            //   features: selectedStateData,
+            // }}
+            // style={{ fillColor: "green" }}
+            style={(feature) => ({
+              fillColor:
+                feature.properties.dtname === state ? "green" : "lightGreen",
+              weight: 2,
+              opacity: 1,
+              color: "white",
+              fillOpacity: 0.5,
+            })}
+          >
+            {markerCoordinates
+              .filter(
+                (coordinate) => state === "Punjab" || coordinate[2] === state
+              )
+              .map((coordinate, index) => (
+                <Marker
+                  key={index}
+                  position={[coordinate[0], coordinate[1]]}
+                  icon={markerIcon}
+                >
+                  <Tooltip>Warehouse_ID: {coordinate[3]}</Tooltip>
+                </Marker>
+              ))}
+            {/* <Polyline positions={markerCoordinates} color="magenta" /> */}
+          </GeoJSON>
+        </MapContainer>
+      </div>
     </div>
   );
 };

@@ -29,7 +29,7 @@ function Login() {
 
   const handleTogglePasswordVisibility = () => setShowPassword((show) => !show);
 
-  const doSubmit = () => {
+  const login = () => {
     const userMatch = users.find(
       (user) => user.name === username && user.password === password
     );
@@ -103,7 +103,7 @@ function Login() {
           <Button
             // disabled={username.length === 0 || password.length === 0}
             variant="contained"
-            onClick={doSubmit}
+            onClick={login}
           >
             Login
           </Button>
