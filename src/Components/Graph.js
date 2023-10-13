@@ -38,27 +38,36 @@ function Graph() {
       style={{
         fontSize: 11,
         fontWeight: "bold",
+        width: "70vw",
       }}
     >
-      <BarChart
-        width={1200}
-        height={600}
-        data={excelData}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" angle={15} interval={0} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="Supply" fill="#008000" />
-        <Bar dataKey="Demand" fill="#FF0000" />
-      </BarChart>
+      <div style={{ padding: 20 }}>
+        <BarChart
+          width={1200}
+          height={600}
+          data={excelData}
+          barSize={16}
+          style={{
+            backgroundColor: "white",
+            borderRadius: 8,
+            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.6)",
+          }}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
+          <XAxis dataKey="name" angle={15} interval={0} />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="Supply" fill="#008000" />
+          <Bar dataKey="Demand" fill="#FF0000" />
+        </BarChart>
+      </div>
     </div>
   );
 }

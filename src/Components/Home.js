@@ -1,9 +1,8 @@
 import React from "react";
-import Map from "./Map";
-import NavBar from "./NavBar";
-import Graph from "./Graph";
 import { Box, Grid, Paper, styled } from "@mui/material";
+import NavBar from "./NavBar";
 import SideBar from "./SideBar";
+import Main from "./Main";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -17,23 +16,26 @@ function Home() {
   const savedUsername = localStorage.getItem("username");
   if (savedUsername === "PunjabUser")
     return (
-      <Box
-        style={{
-          backgroundColor: "rgb(238 242 246)",
-        }}
-      >
-        <Grid container spacing={2}>
+      <Box>
+        <Grid container>
           <Grid item xs={12}>
             <NavBar />
           </Grid>
-          <Grid item xs={2}>
-            <Item>
-              <SideBar />
-            </Item>
+          <Grid item xs={1.8} style={{ backgroundColor: "white" }}>
+            <SideBar />
           </Grid>
-          <Grid item xs={8}>
-            <Graph />
-            <Map />
+          <Grid
+            item
+            xs={10}
+            style={{
+              backgroundColor: "rgb(238 242 246)",
+              borderRadius: "8px 8px 0px 0px",
+            }}
+          >
+            <Main />
+          </Grid>
+          <Grid item xs={0.2} style={{ backgroundColor: "white" }}>
+            <div></div>
           </Grid>
         </Grid>
       </Box>

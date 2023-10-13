@@ -1,6 +1,6 @@
 import React from "react";
 import "leaflet/dist/leaflet.css";
-import Punjab from "./punjab.json";
+import Punjab from "../StateData/punjab.json";
 import { MapContainer, GeoJSON, Marker, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import locationIcon from "../Img/location.png";
@@ -10,7 +10,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  withTheme,
 } from "@mui/material";
 
 const MenuProps = {
@@ -325,9 +324,23 @@ const Map = () => {
   // }, [state]);
 
   return (
-    <div style={{ backgroundColor: "white", width: "80vw" }}>
-      <div style={{ display: "flex", justifyContent: "end", padding: "10px" }}>
-        <FormControl sx={{ m: 1, minWidth: 210 }} size="small">
+    <div
+      style={{
+        width: "62.6vw",
+        backgroundColor: "white",
+        margin: 20,
+        borderRadius: 8,
+        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.6)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "end",
+          padding: "25px 25px 0px 0px",
+        }}
+      >
+        <FormControl sx={{ m: 1, minWidth: 210 }} size="medium">
           <InputLabel id="demo-simple-select-autowidth-label">State</InputLabel>
           <Select
             value={state}
@@ -356,13 +369,16 @@ const Map = () => {
           </Select>
         </FormControl>
       </div>
-      <div
-        style={{ display: "flex", justifyContent: "center", padding: "10px" }}
-      >
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <MapContainer
-          style={{ height: "75vh", width: "40vw" }}
+          style={{
+            height: "75vh",
+            width: "40vw",
+            backgroundColor: "white",
+          }}
           zoom={7.5}
           center={[31.0722768, 75.5398582]}
+          // scrollWheelZoom={false}
         >
           <GeoJSON
             data={Punjab}
@@ -376,7 +392,7 @@ const Map = () => {
                 feature.properties.dtname === state ? "green" : "lightGreen",
               weight: 2,
               opacity: 1,
-              color: "white",
+              // color: "red",
               fillOpacity: 0.5,
             })}
           >

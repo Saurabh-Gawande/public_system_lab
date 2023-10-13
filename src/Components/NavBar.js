@@ -19,24 +19,29 @@ function NavBar() {
   return (
     <div>
       <Box sx={{ flexGrow: 1, height: "6.8vh" }}>
-        <AppBar position="static" sx={{ backgroundColor: "white" }}>
+        <AppBar
+          elevation={0}
+          position="fixed"
+          sx={{ backgroundColor: "white" }}
+        >
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="blue"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <Menu />
-            </IconButton>
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, color: "black" }}
+              sx={{ mr: 3, color: "black" }}
             >
               News
             </Typography>
+            <div style={{ flexGrow: 1 }}>
+              <IconButton
+                size="large"
+                edge="start"
+                color="blue"
+                aria-label="menu"
+              >
+                <Menu />
+              </IconButton>
+            </div>
             <Button color="primary" variant="contained" onClick={logout}>
               Logout
             </Button>
