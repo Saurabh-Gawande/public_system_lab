@@ -18,7 +18,7 @@ function NavBar() {
 
   return (
     <div>
-      <Box sx={{ flexGrow: 1, height: "6.8vh" }}>
+      <Box sx={{ flexGrow: 1, height: "8vh" }}>
         <AppBar
           elevation={0}
           position="fixed"

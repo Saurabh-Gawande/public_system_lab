@@ -5,10 +5,8 @@ function UserState(props) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    // Define the URL of your Flask API endpoint
-    const apiUrl = "http://127.0.0.1:5000/get_users"; // Replace with your Flask API URL
+    const apiUrl = "http://127.0.0.1:5000/get_users";
 
-    // Make a GET request to the Flask API endpoint
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {

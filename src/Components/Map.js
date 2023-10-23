@@ -5,12 +5,7 @@ import { MapContainer, GeoJSON, Marker, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import locationIcon from "../Img/location.png";
 import { useEffect, useState } from "react";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const MenuProps = {
   PaperProps: {
@@ -202,10 +197,10 @@ const markerCoordinates = [
   [30.505903, 76.2573, "Patiala", 7578],
   [30.128709, 76.189141, "Patiala", 6678],
   [30.12684, 76.191511, "Patiala", 3579],
-  [30.2075048612868, 74.4788586198232, "Muktsar", 2158],
-  [30.0520993, 74.6113118, "Muktsar", 1768],
-  [30.2123193, 74.6292466, "Muktsar", 1999],
-  [30.5512805439395, 74.6507186070084, "Muktsar", 2084],
+  [30.2075048612868, 74.4788586198232, "Sri Muktsar Sahib", 2158],
+  [30.0520993, 74.6113118, "Sri Muktsar Sahib", 1768],
+  [30.2123193, 74.6292466, "Sri Muktsar Sahib", 1999],
+  [30.5512805439395, 74.6507186070084, "Sri Muktsar Sahib", 2084],
   [31.67084, 74.77682, "Amritsar", 2246],
   [31.5759765, 75.0561865, "Amritsar", 1922],
   [31.7077785, 74.9261539, "Amritsar", 7235],
@@ -298,8 +293,8 @@ const markerCoordinates = [
   [30.212903, 75.8618242, "Sangrur", 7761],
   [30.046338, 76.017433, "Sangrur", 7207],
   [30.045082, 76.011684, "Sangrur", 7201],
-  [30.4646866, 74.5153838, "Muktsar", 1696],
-  [30.1807536241431, 74.5339267048528, "Muktsar", 1721],
+  [30.4646866, 74.5153838, "Sri Muktsar Sahib", 1696],
+  [30.1807536241431, 74.5339267048528, "Sri Muktsar Sahib", 1721],
   [31.65368, 75.82447, "Hoshiarpur", 5539],
 ];
 
@@ -326,11 +321,11 @@ const Map = () => {
   return (
     <div
       style={{
-        width: "62.6vw",
+        width: "60vw",
         backgroundColor: "white",
         margin: 20,
         borderRadius: 8,
-        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.6)",
+        // boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.6)",
       }}
     >
       <div
@@ -340,7 +335,7 @@ const Map = () => {
           padding: "25px 25px 0px 0px",
         }}
       >
-        <FormControl sx={{ m: 1, minWidth: 210 }} size="medium">
+        <FormControl sx={{ m: 1, minWidth: 200 }} size="medium">
           <InputLabel id="demo-simple-select-autowidth-label">State</InputLabel>
           <Select
             value={state}
@@ -351,18 +346,29 @@ const Map = () => {
             <MenuItem value="Punjab">Punjab</MenuItem>
             <MenuItem value={"Amritsar"}>Amritsar</MenuItem>
             <MenuItem value={"Bathinda"}>Bathinda</MenuItem>
+            <MenuItem value={"Barnala"}>Barnala</MenuItem>
             <MenuItem value={"Faridkot"}>Faridkot</MenuItem>
             <MenuItem value={"Firozpur"}>Firozpur</MenuItem>
+            <MenuItem value={"Jalandhar"}>Jalandhar</MenuItem>
             <MenuItem value={"Fatehgarh Sahib"}>Fatehgarh Sahib</MenuItem>
+            <MenuItem value={"Fazilka"}>Fazilka</MenuItem>
+            <MenuItem value={"Faridkot"}>Faridkot</MenuItem>
             <MenuItem value={"Kapurthala"}>Kapurthala</MenuItem>
+            <MenuItem value={"Patiala"}>Patiala</MenuItem>
+            <MenuItem value={"Pathankot"}>Pathankot</MenuItem>
             <MenuItem value={"Gurdaspur"}>Gurdaspur</MenuItem>
             <MenuItem value={"Hoshiarpur"}>Hoshiarpur</MenuItem>
             <MenuItem value={"Ludhiana East"}>Ludhiana East</MenuItem>
             <MenuItem value={"Ludhiana West"}>Ludhiana West</MenuItem>
             <MenuItem value={"Mansa"}>Mansa</MenuItem>
             <MenuItem value={"Moga"}>Moga</MenuItem>
-            <MenuItem value={"Muktsar"}>Muktsar</MenuItem>
-            <MenuItem value={"Nawanshahr"}>Nawanshahr</MenuItem>
+            <MenuItem value={"Sahibzada Ajit Singh Nag*"}>
+              Sahibzada Ajit Singh Nag*
+            </MenuItem>
+            <MenuItem value={"Sri Muktsar Sahib"}>Sri Muktsar Sahib</MenuItem>
+            <MenuItem value={"Shahid Bhagat Singh Nagar"}>
+              Shahid Bhagat Singh Nagar
+            </MenuItem>
             <MenuItem value={"Rupnagar"}>Rupnagar</MenuItem>
             <MenuItem value={"Sangrur"}>Sangrur</MenuItem>
             <MenuItem value={"Tarn Taran"}>Tarn Taran</MenuItem>
@@ -378,7 +384,7 @@ const Map = () => {
           }}
           zoom={7.5}
           center={[31.0722768, 75.5398582]}
-          // scrollWheelZoom={false}
+          scrollWheelZoom={false}
         >
           <GeoJSON
             data={Punjab}

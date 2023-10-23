@@ -2,7 +2,7 @@ import pymongo
 from flask import Flask, request, jsonify
 from flask_cors import CORS 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:3003"}})
 
 app.config['MONGO_URI'] = "mongodb://localhost:27017"
 mongo = pymongo.MongoClient(app.config['MONGO_URI'])

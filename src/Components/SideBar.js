@@ -1,14 +1,33 @@
-import { BatchPrediction, Dashboard, Keyboard } from "@mui/icons-material";
+import React, { useState } from "react";
 import {
-  Box,
   ListItemIcon,
-  MenuItem,
+  ListItemText,
   MenuList,
+  MenuItem,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import { makeStyles } from "@mui/styles"; 
+import { Keyboard, BatchPrediction } from "@mui/icons-material";
+
+const useStyles = makeStyles({
+  menuItem: {
+    "&.Mui-selected, &.Mui-selected:hover": {
+      color: "#5e35b1",
+      backgroundColor: "#ede7f6",
+      borderRadius: 8,
+      fontSize: "0.875rem",
+    },
+    "&:hover": {
+      color: "#5e35b1",
+      backgroundColor: "#ede7f6",
+      borderRadius: 8,
+    },
+  },
+});
 
 function SideBar() {
+  const classes = useStyles(); // Initialize the makeStyles classes
+
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionClick = (option) => {
@@ -22,45 +41,36 @@ function SideBar() {
         <MenuItem
           onClick={() => handleOptionClick("Translate")}
           selected={selectedOption === "Translate"}
-          style={{
-            backgroundColor:
-              selectedOption === "Translate"
-                ? "rgb(237 228 246)"
-                : "transparent",
-          }}
+          classes={{ root: classes.menuItem }} // Apply the styles here
         >
-          <ListItemIcon style={{ marginRight: -20 }}>
-            <Keyboard style={{ color: "rgb(25, 118, 210)" }} fontSize="small" />
+          <ListItemIcon>
+            <Keyboard fontSize="small" />
           </ListItemIcon>
-          <Typography
-            style={{ fontSize: 14, marginLeft: 20 }}
-            variant="inherit"
-          >
-            Translate
-          </Typography>
+          <ListItemText>
+            <Typography
+              style={{ fontSize: 14, marginLeft: 20 }}
+              variant="inherit"
+            >
+              Translate
+            </Typography>
+          </ListItemText>
         </MenuItem>
         <MenuItem
           onClick={() => handleOptionClick("Hypothesis")}
           selected={selectedOption === "Hypothesis"}
-          style={{
-            backgroundColor:
-              selectedOption === "Hypothesis"
-                ? "rgb(237 228 246)"
-                : "transparent",
-          }}
+          classes={{ root: classes.menuItem }} // Apply the styles here
         >
-          <ListItemIcon style={{ marginRight: -20 }}>
-            <BatchPrediction
-              style={{ color: "rgb(25, 118, 210)" }}
-              fontSize="small"
-            />
+          <ListItemIcon>
+            <BatchPrediction fontSize="small" />
           </ListItemIcon>
-          <Typography
-            style={{ fontSize: 14, marginLeft: 20 }}
-            variant="inherit"
-          >
-            Hypothesis
-          </Typography>
+          <ListItemText>
+            <Typography
+              style={{ fontSize: 14, marginLeft: 20 }}
+              variant="inherit"
+            >
+              Hypothesis
+            </Typography>
+          </ListItemText>
         </MenuItem>
       </MenuList>
     </div>
