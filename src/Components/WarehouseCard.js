@@ -11,8 +11,8 @@ import ArchiveTwoToneIcon from "@mui/icons-material/ArchiveOutlined";
 
 const WarehouseCard = ({ isLoading }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [warehouse, setWarehouse] = useState(0);
-  const [capacity, setCapacity] = useState(0);
+  const [warehouse, setWarehouse] = useState();
+  const [capacity, setCapacity] = useState();
 
   useEffect(() => {
     const excel = async () => {

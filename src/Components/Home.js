@@ -1,9 +1,8 @@
 import React from "react";
-import { Box, Grid, Paper, styled } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
 import Main from "./Main";
-
 
 function Home() {
   const savedUsername = localStorage.getItem("username");

@@ -80,15 +80,20 @@ function QrmChat() {
         // boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.6)",
       }}
     >
-      <CardContent>
-        <Grid container alignItems="center" justifyContent="space-between">
+      <Grid>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="space-between"
+          style={{ padding: 25 }}
+        >
           <Grid item>
             <img
               src={warehouse}
               alt="WarehouseIcon"
               style={{
-                width: "350px",
-                height: "350px",
+                width: "15vw",
+                height: "45vh",
               }}
             />
           </Grid>
@@ -108,8 +113,8 @@ function QrmChat() {
                 src={arrow}
                 alt="WarehouseIcon"
                 style={{
-                  width: "270px",
-                  height: "80px",
+                  width: "20vw",
+                  height: "8vh",
                 }}
               />
             </Grid>
@@ -122,13 +127,13 @@ function QrmChat() {
               src={warehouse}
               alt="WarehouseIcon"
               style={{
-                width: "350px",
-                height: "350px",
+                width: "15vw",
+                height: "45vh",
               }}
             />
           </Grid>
         </Grid>
-      </CardContent>
+      </Grid>
     </div>
   );
 }

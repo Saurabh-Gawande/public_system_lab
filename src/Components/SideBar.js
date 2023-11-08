@@ -6,29 +6,43 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles"; 
+import { makeStyles } from "@mui/styles";
 import { Keyboard, BatchPrediction } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   menuItem: {
-    "&.Mui-selected, &.Mui-selected:hover": {
-      color: "#5e35b1",
+    "&.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected": {
       backgroundColor: "#ede7f6",
       borderRadius: 8,
-      fontSize: "0.875rem",
-    },
-    "&:hover": {
+      fontWeight: "bold",
       color: "#5e35b1",
-      backgroundColor: "#ede7f6",
-      borderRadius: 8,
     },
+    "&.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:not(.Mui-selected)": {
+      "&:hover": {
+        backgroundColor: "#ede7f6",
+        color: "#5e35b1",
+        borderRadius: 8,
+        "& $icon": {
+          color: "#5e35b1",
+          fontSize: "initial",
+        },
+      },
+      "& $icon": {
+        color: "initial",
+        fontSize: "initial",
+      },
+    },
+  },
+  icon: {
+    color: "#5e35b1",
+    fontSize: "1.875rem",
   },
 });
 
 function SideBar() {
-  const classes = useStyles(); // Initialize the makeStyles classes
+  const classes = useStyles();
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("Translate");
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
@@ -41,10 +55,10 @@ function SideBar() {
         <MenuItem
           onClick={() => handleOptionClick("Translate")}
           selected={selectedOption === "Translate"}
-          classes={{ root: classes.menuItem }} // Apply the styles here
+          classes={{ root: classes.menuItem }}
         >
           <ListItemIcon>
-            <Keyboard fontSize="small" />
+            <Keyboard fontSize="small" className={classes.icon} />
           </ListItemIcon>
           <ListItemText>
             <Typography
@@ -58,10 +72,10 @@ function SideBar() {
         <MenuItem
           onClick={() => handleOptionClick("Hypothesis")}
           selected={selectedOption === "Hypothesis"}
-          classes={{ root: classes.menuItem }} // Apply the styles here
+          classes={{ root: classes.menuItem }}
         >
           <ListItemIcon>
-            <BatchPrediction fontSize="small" />
+            <BatchPrediction fontSize="small" className={classes.icon} />
           </ListItemIcon>
           <ListItemText>
             <Typography
