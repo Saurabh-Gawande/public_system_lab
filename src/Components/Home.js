@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
-import Main from "./Main";
+import { Outlet } from "react-router-dom";
 
 function Home() {
   const savedUsername = localStorage.getItem("username");
@@ -24,10 +24,10 @@ function Home() {
               borderRadius: "8px 8px 0px 0px",
             }}
           >
-            <Main />
+            <Outlet />
           </Grid>
           <Grid item xs={0.2} style={{ backgroundColor: "white" }}>
-            <div></div>
+            <div />
           </Grid>
         </Grid>
       </Box>

@@ -69,7 +69,6 @@ function Graph() {
         position: "bottom",
         labels: {
           useSeriesColors: false,
-          background: ["#008000", "#1e88e5"],
         },
         markers: {
           width: 16,
@@ -83,7 +82,6 @@ function Graph() {
       },
       fill: {
         type: "solid",
-        colors: ["#90caf9", "#1e88e5"],
       },
       dataLabels: {
         enabled: false,

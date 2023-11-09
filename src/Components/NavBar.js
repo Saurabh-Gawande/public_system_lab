@@ -9,6 +9,7 @@ import {
 import React from "react";
 import styles from "../Css/navbar.module.css";
 import { Menu } from "@mui/icons-material";
+import Logo from "../Img/FCI-Logo.svg";
 
 function NavBar() {
   const logout = () => {
@@ -28,11 +29,18 @@ function NavBar() {
             <Typography
               variant="h6"
               component="div"
-              sx={{ mr: 3, color: "black" }}
+              sx={{ ml: 5, mr: 20, mt: 1, color: "black" }}
             >
-              News
+              <img src={Logo} alt="logo" style={{ width: 60, height: 60 }} />
             </Typography>
-            <div style={{ flexGrow: 1 }}>
+            <div
+              style={{
+                flexGrow: 1,
+                flexDirection: "row",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <IconButton
                 size="large"
                 edge="start"
@@ -41,6 +49,7 @@ function NavBar() {
               >
                 <Menu />
               </IconButton>
+              <h2 style={{ color: "black", marginLeft: 100 }}>punjab</h2>
             </div>
             <Button color="primary" variant="contained" onClick={logout}>
               Logout

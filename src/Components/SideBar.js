@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import {
   ListItemIcon,
   ListItemText,
@@ -16,6 +17,8 @@ const useStyles = makeStyles({
       borderRadius: 8,
       fontWeight: "bold",
       color: "#5e35b1",
+      margin: 3,
+      width: "12vw",
     },
     "&.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:not(.Mui-selected)": {
       "&:hover": {
@@ -35,17 +38,19 @@ const useStyles = makeStyles({
   },
   icon: {
     color: "#5e35b1",
-    fontSize: "1.875rem",
+    // fontSize: "1.875rem",
   },
 });
 
 function SideBar() {
   const classes = useStyles();
+  const navigate = useNavigate();
 
-  const [selectedOption, setSelectedOption] = useState("Translate");
+  const [selectedOption, setSelectedOption] = useState("Dashboard");
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
+    navigate("/home/main1");
   };
 
   return (
@@ -53,8 +58,11 @@ function SideBar() {
       <div style={{ fontWeight: "bold" }}>Dashboard</div>
       <MenuList>
         <MenuItem
-          onClick={() => handleOptionClick("Translate")}
-          selected={selectedOption === "Translate"}
+          onClick={() => {
+            navigate("/home");
+            setSelectedOption("Dashboard");
+          }}
+          selected={selectedOption === "Dashboard"}
           classes={{ root: classes.menuItem }}
         >
           <ListItemIcon>
@@ -65,13 +73,16 @@ function SideBar() {
               style={{ fontSize: 14, marginLeft: 20 }}
               variant="inherit"
             >
-              Translate
+              Dashboard
             </Typography>
           </ListItemText>
         </MenuItem>
         <MenuItem
-          onClick={() => handleOptionClick("Hypothesis")}
-          selected={selectedOption === "Hypothesis"}
+          onClick={() => {
+            navigate("/home/main1");
+            setSelectedOption("Home");
+          }}
+          selected={selectedOption === "Home"}
           classes={{ root: classes.menuItem }}
         >
           <ListItemIcon>
@@ -82,7 +93,7 @@ function SideBar() {
               style={{ fontSize: 14, marginLeft: 20 }}
               variant="inherit"
             >
-              Hypothesis
+              Home
             </Typography>
           </ListItemText>
         </MenuItem>
